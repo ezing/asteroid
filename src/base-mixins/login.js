@@ -18,6 +18,12 @@ export function logout () {
     return this.call("logout").then(onLogout.bind(this));
 }
 
+export function resumeLoginWithToken () {
+    this.userId = null;
+    this.loggedIn = false;
+    this.ddp.on("connected", resumeLogin.bind(this));
+}
+
 /*
 *   Init method
 */
